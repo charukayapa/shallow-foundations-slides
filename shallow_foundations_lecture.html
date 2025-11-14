@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shallow Foundations Study Guide</title>
+<!-- Fixed Font Links -->
+<link rel="preconnect" href="https://www.google.com/search?q=https://fonts.googleapis.com">
+<link rel="preconnect" href="https://www.google.com/search?q=https://fonts.gstatic.com" crossorigin>
+<link href="https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DPoppins:wght%40400%3B700%26family%3DLato:wght%40400%3B700%26display%3Dswap" rel="stylesheet">
+<!-- Fixed Font Awesome Link -->
+<link rel="stylesheet" href="https://www.google.com/search?q=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* 1. THE SETUP */
+* {
+box-sizing: border-box;
+}
+
+    body {
+        /* Using a light, academic-friendly background */
+        background-color: #e2e8f0; 
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+        margin: 0;
+        min-height: 100vh;
+        padding: 20px 0;
+        place-items: center;
+    }
+
+    .slide-container {
+        align-items: center;
+        /* Using a clean white background for the slides */
+        background-color: #f8fafc; 
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        height: 720px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 60px;
+        position: relative;
+        width: 1280px;
+    }
+
+    /* 1.1 BACKGROUND STYLING (Subtle) */
+    .slide-container::before {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+        /* A subtle gradient blob for visual interest */
+        background: radial-gradient(circle at 10% 10%, #c7d2fe 0%, rgba(199, 210, 254, 0) 25%);
+    }
+
+    .slide-container > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* 2. CONSISTENT TYPOGRAPHY (Large & Attractive) */
+
+    /* Headings Font - 'Poppins' (Bold, Modern) */
+    .slide-container h1,
+    .slide-container h2,
+    .slide-container h3,
+    .slide-container .slide-title {
+        /* A strong, academic deep blue for headings */
+        color: #1e3a8a; 
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+    }
+
+    /* Body Text Font - 'Lato' (Clear, Readable) */
+    .slide-container p,
+    .slide-container li,
+    .slide-container .subtitle,
+    .slide-container .legend li,
+    .slide-container th,
+    .slide-container td,
+    .slide-container .alternating-text-tile p {
+        /* A dark, readable slate grey for body text */
+        color: #334155; 
+        font-family: 'Lato', sans-serif;
+    }
+
+    /* Consistent Font Sizes (Large) */
+    .slide-container h1 {
+        font-size: 84px; /* Very large for title */
+    }
+
+    .slide-container .slide-title {
+        /* This is an h2 */
+        font-size: 48px; /* Large slide title */
+        font-weight: 700;
+        margin-bottom: 40px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .slide-container h3 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    /* Unified body text size (Large) */
+    .slide-container p,
+    .slide-container li,
+    .slide-container .subtitle,
+    .slide-container th,
+    .slide-container td,
+    .slide-container .alternating-text-tile p {
+        font-size: 22px; /* Increased from 18px for readability */
+        line-height: 1.5;
+    }
+
+    .slide-container .subtitle {
+        font-size: 28px; /* Larger subtitle */
+        font-weight: 400;
+        margin: 20px auto;
+        color: #475569;
+    }
+
+    .slide-container .content-area {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* 3. LAYOUT DEFINITIONS (Adapted for Theme) */
+
+    .title-layout {
+        text-align: center;
+    }
+
+    .two-column {
+        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        width: 100%;
+    }
+
+    .two-column.tiled {
+        align-items: stretch;
+    }
+
+    .two-column.tiled > div {
+        /* Lighter blue tile background */
+        background-color: #eef2ff; 
+        border-radius: 12px;
+        border: 1px solid #c7d2fe;
+        padding: 40px;
+        text-align: left;
+    }
+
+    .two-column.tiled h3 {
+        /* Accent blue for tiled headers */
+        color: #3b82f6; 
+    }
+
+    .two-column ul {
+        list-style: disc;
+        margin: 0;
+        padding-left: 30px; /* Increased padding */
+    }
+
+    .two-column li {
+        margin-bottom: 15px;
+        font-size: 20px; /* Slightly smaller for lists */
+    }
+
+    .image-wrapper {
+        border-radius: 12px;
+        height: 400px; /* Increased height */
+        overflow: hidden;
+        width: 100%;
+        border: 1px solid #c7d2fe;
+    }
+
+    .image-wrapper img {
+        height: 100%;
+        object-fit: cover; /* Use cover for most images */
+        width: 100%;
+    }
+    
+    /* Specific override for Image_Right_Text_Left */
+    .slide-container .two-column .image-wrapper img {
+        object-fit: contain; /* Use contain for diagrams as requested */
+    }
+
+    .tiled-content {
+        align-items: stretch;
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .tile {
+        align-items: center;
+        background-color: #eef2ff; /* Lighter blue tile */
+        border-radius: 12px;
+        border: 1px solid #c7d2fe;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: flex-start;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .tile .icon {
+        color: #3b82f6; /* Accent blue icon */
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .tile h3 {
+        color: #1e3a8a; /* Deep blue header */
+    }
+
+    .tile p {
+        font-size: 18px; /* Smaller text for tiles */
+    }
+
+    .bullet-list {
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .bullet-list ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .bullet-list li {
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-left: 40px;
+        position: relative;
+        font-size: 22px; /* Large li text */
+    }
+
+    .bullet-list i {
+        color: #3b82f6; /* Accent blue icon */
+        font-size: 24px;
+        left: 0;
+        margin-top: 5px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+    }
+
+    .bullet-list li strong {
+        color: #1e3a8a; /* Deep blue strong text */
+        font-weight: 700;
+    }
+
+    .image-tile {
+        flex: 1;
+        text-align: center;
+    }
+
+    .image-tile .image-wrapper {
+        height: 225px;
+        margin-bottom: 20px;
+    }
+
+    .image-tile .image-wrapper img {
+        object-fit: cover; /* Ensure tiled images are consistent */
+    }
+
+    /* Section Title */
+    .section-title-layout {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .section-title-layout h2 {
+        font-size: 72px; /* Larger Section Title */
+        margin-bottom: 20px;
+    }
+
+    .section-title-layout p {
+        font-size: 26px; /* Larger subtitle */
+        margin: 0 auto;
+        max-width: 700px;
+    }
+
+    .section-title-layout hr {
+        background-color: #3b82f6; /* Accent blue line */
+        border: none;
+        height: 5px;
+        margin: 30px auto;
+        width: 100px;
+    }
+
+    /* Quote Layout */
+    .quote-layout {
+        text-align: center;
+        width: 80%;
+    }
+
+    .quote-layout blockquote {
+        color: #1e3a8a; /* Deep blue quote */
+        font-size: 48px; /* Large quote */
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.4;
+        margin: 0 0 30px 0;
+        padding: 0 40px;
+        position: relative;
+    }
+
+    .quote-layout blockquote::before,
+    .quote-layout blockquote::after {
+        color: #c7d2fe; /* Light blue quote marks */
+        content: '"';
+        font-size: 100px;
+        line-height: 0;
+        position: absolute;
+    }
+
+    .quote-layout blockquote::before {
+        left: -10px;
+        top: 30px;
+    }
+
+    .quote-layout blockquote::after {
+        bottom: 10px;
+        right: -10px;
+    }
+
+    .quote-layout cite {
+        color: #475569;
+        font-size: 24px; /* Larger cite */
+        font-style: normal;
+        font-family: 'Lato', sans-serif;
+    }
+
+    /* Q&A Layout */
+    .qa-layout {
+        text-align: center;
+        width: 100%;
+        align-self: center;
+    }
+
+    .qa-layout h2 {
+        font-size: 90px; /* Large Q&A */
+        margin-bottom: 20px;
+    }
+
+    .qa-layout p {
+        font-size: 26px;
+    }
+</style>
+
+
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+<div class="title-layout">
+<h1>Shallow Foundations</h1>
+<p class="subtitle">Understanding Site Influences, Structural Loads, and Foundation Performance</p>
+</div>
+</div>
+
+<div class="slide-container" id="slide2">
+<h2 class="slide-title">Key Foundation Concepts</h2>
+<div class="content-area">
+<div class="tiled-content">
+<div class="tile">
+<div class="icon"><i class="fa-solid fa-weight-hanging"></i></div>
+<h3>Building Loads</h3>
+<p>Understanding Dead, Live, and Wind loads that press down on the foundation.</p>
+</div>
+<div class="tile">
+<div class="icon"><i class="fa-solid fa-arrow-down"></i></div>
+<h3>Ground Settlement</h3>
+<p>How the ground beneath a building compresses and moves, and the types of settlement.</p>
+</div>
+<div class="tile">
+<div class="icon"><i class="fa-solid fa-drafting-compass"></i></div>
+<h3>Foundation Types</h3>
+<p>Exploring the main types of shallow foundations: Strip, Pad, and Raft.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide3">
+<h2 class="slide-title">What is a Foundation?</h2>
+<div class="content-area">
+<div class="two-column tiled">
+<div>
+<h3>Shallow (Spread)</h3>
+<p>A foundation that transmits the load of the building safely to the ground at a level <strong>close to the lowest floor</strong> of the building.</p>
+<ul>
+<li>Strip Footings & Pads</li>
+<li>Raft Foundations</li>
+</ul>
+</div>
+<div>
+<h3>Deep (Piled)</h3>
+<p>A foundation that transmits loads to deeper, more competent soil layers, far below the lowest floor.</p>
+<ul>
+<li>Piled Foundations</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide4">
+<h2 class="slide-title">NZ Code & Foundation Durability</h2>
+<div class="content-area">
+<div class="two-column">
+<div>
+<h3>Key Requirements</h3>
+<p>Foundations must be designed to last the life of the building.</p>
+<ul>
+<li><strong>NZ Building Code B1/VM4:</strong> Provides specific guidance on foundation requirements.</li>
+<li><strong>Durability:</strong> Materials must resist environmental factors (like moisture).</li>
+<li><strong>Rust Protection:</strong> Steel reinforcing (rebar) must have sufficient concrete cover to protect it from oxygen and water.</li>
+</ul>
+</div>
+<div>
+<div class="image-wrapper">
+<!-- Static Placeholder: MINIMUM CONCRETE COVER REBAR -->
+<img src="https://www.google.com/search?q=https://placehold.co/600x400/1e3a8a/ffffff%3Ftext%3DMINIMUM%2BCONCRETE%2BCOVER%2BREBAR" alt="Diagram showing minimum concrete cover over reinforcing steel">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide5">
+<h2 class="slide-title">Understanding Building Loads</h2>
+<div class="content-area">
+<div class="two-column tiled">
+<div>
+<h3>Dead Loads</h3>
+<p>Permanent, static loads that do not change.</p>
+<ul>
+<li>The building's own mass (walls, floors)</li>
+<li>Fixed equipment</li>
+<li>Pressure from surrounding soil & water</li>
+</ul>
+</div>
+<div>
+<h3>Live Loads</h3>
+<p>Variable, non-permanent loads that can change.</p>
+<ul>
+<li>Occupiers, furniture, and equipment</li>
+<li>Wind forces</li>
+<li>Earthquake forces</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide6">
+<h2 class="slide-title">Wind Loads: Pressure vs. Suction</h2>
+<div class="content-area">
+<div class="two-column">
+<div>
+<h3>Wind is Not Just a Push</h3>
+<p>While wind creates <strong>pressure</strong> (pushing) on a building, it also creates <strong>suction</strong> (pulling) on the leeward (downwind) side and especially on the roof.</p>
+<p>Foundations must be designed to anchor the superstructure, preventing uplift from these suction forces.</p>
+</div>
+<div>
+<div class="image-wrapper">
+<!-- Static Placeholder: WIND PRESSURE AND SUCTION DIAGRAM -->
+<img src="https://www.google.com/search?q=https://placehold.co/600x400/1e3a8a/ffffff%3Ftext%3DWIND%2BPRESSURE%2BAND%2BSUCTION%2BDIAGRAM" alt="Diagram of wind pressure and suction on a house roof">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide7">
+<h2 class="slide-title">Load Types: UDL vs. PL</h2>
+<div class="content-area">
+<div class="two-column">
+<div>
+<h3>How Loads are Applied</h3>
+<ul>
+<li><strong>Uniformly Distributed Load (UDL):</strong> The load is spread evenly over its support. A load-bearing wall creates a UDL on the footing below it.</li>
+
+
+
+
+
+<li><strong>Point Load (PL):</strong> The load is concentrated on a single point. A column creates a PL on the pad foundation below it.</li>
+</ul>
+</div>
+<div>
+<div class="image-wrapper">
+<!-- Static Placeholder: UDL VS POINT LOAD DIAGRAM -->
+<img src="https://www.google.com/search?q=https://placehold.co/600x400/1e3a8a/ffffff%3Ftext%3DUDL%2BVS%2BPOINT%2BLOAD%2BDIAGRAM" alt="Diagram comparing UDL and PL">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide8">
+<h2 class="slide-title">Ground Settlement</h2>
+<div class="content-area">
+<div class="two-column">
+<div>
+<h3>Types of Settlement</h3>
+<p>Settlement is the gradual downward movement of the foundation as the soil consolidates (compacts) under the building's load.</p>
+<ul>
+<li><strong>Uniform Settlement:</strong> The entire building sinks evenly. (No cracks)</li>
+<li><strong>Tipping Settlement:</strong> The building tilts. (Often no cracks)</li>
+<li><strong>Differential Settlement:</strong> One part of the building sinks more than another. This is dangerous and causes cracks.</li>
+</ul>
+</div>
+<div>
+<div class="image-wrapper">
+<!-- Static Placeholder: DIFFERENTIAL SETTLEMENT CRACKS -->
+<img src="https://www.google.com/search?q=https://placehold.co/600x400/1e3a8a/ffffff%3Ftext%3DDIFFERENTIAL%2BSETTLEMENT%2BCRACKS" alt="Diagram of uniform, tipping, and differential settlement">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide9">
+<h2 class="slide-title">Foundation Type 1: Strip Footing</h2>
+<div class="content-area">
+<div class="two-column">
+<div>
+<h3>Continuous Strip Foundations</h3>
+<p>Used to support <strong>Uniformly Distributed Loads (UDLs)</strong>, such as continuous load-bearing walls.</p>
+<ul>
+<li><strong>Traditional:</strong> Standard width and depth.</li>
+<li><strong>Wide Strip:</strong> Spreads the load over a larger area, used on weaker soils.</li>
+<li><strong>Deep Strip:</strong> Dug deeper to bypass weak soil and rest on a stronger stratum.</li>
+</ul>
+</div>
+<div>
+<div class="image-wrapper">
+<!-- Static Placeholder: REINFORCED CONCRETE STRIP FOOTING -->
+<img src="https://www.google.com/search?q=https://placehold.co/600x400/1e3a8a/ffffff%3Ftext%3DREINFORCED%2BCONCRETE%2BSTRIP%2BFOOTING" alt="Diagram of a reinforced concrete strip footing">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide10">
+<h2 class="slide-title">Foundation Type 2: Pad Foundation</h2>
+<div class="content-area">
+<div class="two-column">
+<div>
+<h3>Isolated Pad Foundations</h3>
+<p>Used to support <strong>Point Loads (PLs)</strong>, such as individual or multiple columns. They are typically square or rectangular.</p>
+<p><strong>Pad and Beam:</strong> A system where isolated pads are connected by ground beams. This "locks" the pads together, increasing resistance to seismic loads.</p>
+</div>
+<div>
+<div class="image-wrapper">
+<!-- Static Placeholder: ISOLATED PAD AND GROUND BEAM -->
+<img src="https://www.google.com/search?q=https://placehold.co/600x400/1e3a8a/ffffff%3Ftext%3DISOLATED%2BPAD%2BAND%2BGROUND%2BBEAM" alt="Diagram of an isolated pad foundation supporting a column">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide11">
+<h2 class="slide-title">Special Foundation Configurations</h2>
+<div class="content-area">
+<div class="tiled-content">
+<div class="image-tile">
+<div class="image-wrapper">
+<!-- Static Placeholder: CONTINUOUS COLUMN FOOTING -->
+<img src="https://www.google.com/search?q=https://placehold.co/300x200/1e3a8a/ffffff%3Ftext%3DCONTINUOUS%2BCOLUMN%2BFOOTING" alt="Continuous Column Foundation Diagram">
+</div>
+<h3>Continuous Column</h3>
+<p>Supports a full line of columns when they are too close for isolated pads.</p>
+</div>
+<div class="image-tile">
+<div class="image-wrapper">
+<!-- Static Placeholder: BALANCED FOOTING STRAP BEAM -->
+<img src="https://www.google.com/search?q=https://placehold.co/300x200/1e3a8a/ffffff%3Ftext%3DBALANCED%2BFOOTING%2BSTRAP%2BBEAM" alt="Balanced Foundation Diagram">
+</div>
+<h3>Balanced Foundation</h3>
+<p>Connects pads to balance an offset (eccentric) load, preventing tipping.</p>
+</div>
+<div class="image-tile">
+<div class="image-wrapper">
+<!-- Static Placeholder: CANTILEVER FOOTING BOUNDARY -->
+<img src="https://www.google.com/search?q=https://placehold.co/300x200/1e3a8a/ffffff%3Ftext%3DCANTILEVER%2BFOOTING%2BBOUNDARY" alt="Cantilever Foundation Diagram">
+</div>
+<h3>Cantilever Foundation</h3>
+<p>Used to avoid obstructions (like boundaries or sewers) by cantilevering the load.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="slide-container" id="slide12">
+<h2 class="slide-title">Foundation Type 3: Raft Foundation</h2>
+<div class="content-area">
+<div class="tiled-content">
+<div class="tile">
+<div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+<h3>Solid Slab Raft</h3>
+<p>A solid slab of concrete, reinforced in both directions. Best for lightweight structures.</p>
+</div>
+<div class="tile">
+<div class="icon"><i class="fa-solid fa-th"></i></div>
+<h3>Beam and Slab Raft</h3>
+<p>An inverted floor (beams + slab) used for increased loads and greater rigidity.</p>
+</div>
+<div class="tile">
+<div class="icon"><i class="fa-solid fa-border-all"></i></div>
+<h3>Cellular Raft</h3>
+<p>Top and bottom slabs with internal beams. Used for very high stresses and maximum rigidity.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Slide 13: Two_Column_Tiled_Text (Summary Questions) -->
+
+<div class="slide-container" id="slide13">
+<h2 class="slide-title">Knowledge Check</h2>
+<div class="content-area">
+<div class="two-column tiled">
+<div>
+<p>1. What is specified to ensure reinforcing steel does not rust?</p>
+<p>2. What types of dead loads would you expect?</p>
+<p>3. What may cause soil to shear past the surrounding soil?</p>
+<p>4. What foundation type supports a continuous foundation wall?</p>
+</div>
+<div>
+<p>5. What is the difference between an isolated pad and a continuous column foundation?</p>
+<p>6. With regard to soil conditions, when is a Raft foundation useful?</p>
+<p>7. What would you expect to find within a concrete strip footing?</p>
+<p>8. What are the main elements enhancing a raft foundation's performance?</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Slide 14: Q&A -->
+
+<div class="slide-container" id="slide14">
+<div class="qa-layout">
+<h2>Questions?</h2>
+<p>Good luck with the exam!</p>
+</div>
+</div>
+
+</body>
+</html>
